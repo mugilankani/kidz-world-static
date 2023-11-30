@@ -176,10 +176,24 @@ document.querySelectorAll('.js-add-to-cart').forEach((button) => {
       cartQuantity += item.quantity;
     });
 
-    console.log(cart);
+    // console.log(cart);
     document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
   });
 });
 document.querySelector('#cart').addEventListener('click', () => {
-  console.log(cart);
+  let totalPrice = 0;
+  totalPrice.toFixed(2)
+  cart.forEach(item => {
+    const book = books.find(book => book.name === item.productName);
+    const game = games.find(game => game.name === item.productName);
+    const craftItem = craft.find(craft => craft.name === item.productName);
+
+    const product = book || game || craftItem;
+    const price = product.price * item.quantity;
+
+    console.log(`Name: ${item.productName}, Quantity: ${item.quantity}, Price: ${price}`);
+    totalPrice += price;
+  });
+
+  console.log(`Total Price: ${totalPrice}.`);
 });
