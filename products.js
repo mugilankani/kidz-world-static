@@ -187,6 +187,7 @@ document.querySelector('#cart').addEventListener('click', () => {
     const book = books.find(book => book.name === item.productName);
     const game = games.find(game => game.name === item.productName);
     const craftItem = craft.find(craft => craft.name === item.productName);
+    
 
     const product = book || game || craftItem;
     const price = product.price * item.quantity;
